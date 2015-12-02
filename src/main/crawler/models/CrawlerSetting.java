@@ -16,6 +16,11 @@ public class CrawlerSetting {
 		
 	}
 	
+	public String getSolrServerHost() {
+		String result = "http://" + serverHost + ":" + port + "/" + solrPath + "/" + core;
+		return result;
+	}
+	
 	/**
 	 * @return the serverHost
 	 */

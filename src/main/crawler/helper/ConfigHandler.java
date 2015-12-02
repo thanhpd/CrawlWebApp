@@ -29,8 +29,8 @@ public class ConfigHandler {
 		return instance;
 	}
 	
-	public Property getConfigInfo() {
-		return getProperty();
+	public CrawlerSetting getConfigInfo() {
+		return getCrawlerSetting();
 	}
 	
 	private static void createConfigFile() {
@@ -183,7 +183,7 @@ public class ConfigHandler {
 //		}	  
 	}
 	
-	public static CrawlerSetting getCrawlerSetting() {
+	public CrawlerSetting getCrawlerSetting() {
 		CrawlerSetting setting = new CrawlerSetting();
 		
 		return setting;

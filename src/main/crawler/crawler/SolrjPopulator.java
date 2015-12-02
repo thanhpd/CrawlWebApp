@@ -8,6 +8,7 @@ import org.apache.solr.client.solrj.impl.HttpSolrServer;
 import org.apache.solr.common.SolrInputDocument;
 
 import helper.ConfigHandler;
+import models.CrawlerSetting;
 import models.Property;
 
 public class SolrjPopulator {
@@ -15,10 +16,10 @@ public class SolrjPopulator {
 	private HttpSolrServer server;
 	
 	private static ConfigHandler configHandler = ConfigHandler.getInstance();
-	private static Property prop = configHandler.getConfigInfo();
+	private static CrawlerSetting prop = configHandler.getConfigInfo();
 	
 	private SolrjPopulator() {
-		String solrServer = prop.getFullServerHost();		
+		String solrServer = prop.getSolrServerHost();		
 		server = new HttpSolrServer(solrServer);
 	}
 		

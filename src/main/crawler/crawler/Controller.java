@@ -9,6 +9,7 @@ import edu.uci.ics.crawler4j.fetcher.PageFetcher;
 import edu.uci.ics.crawler4j.robotstxt.RobotstxtConfig;
 import edu.uci.ics.crawler4j.robotstxt.RobotstxtServer;
 import helper.ConfigHandler;
+import helper.Util;
 import models.Crawler;
 import models.CrawlerConfig;
 import models.CrawlerSetting;
@@ -17,7 +18,7 @@ import models.Property;
 
 public class Controller {	
 	private static ConfigHandler configHandler = ConfigHandler.getInstance();
-	private static CrawlerSetting setting = ConfigHandler.getCrawlerSetting();
+	private static CrawlerSetting setting = configHandler.getCrawlerSetting();
 	
     public static void main(String[] args) throws Exception {    	
         String crawlStorageFolder = setting.getCrawlStorageFolder();
@@ -33,15 +34,7 @@ public class Controller {
         	crawlConfig[i] = new CrawlConfig();
         	CrawlerConfig crawler = setting.getConfigs().get(i);
         	
-        	crawlConfig[i].setCrawlStorageFolder(crawlStorageFolder + "/" + crawler.getIndividualStorageFolder());
-        	crawlConfig[i].setPolitenessDelay(crawler.getPolitenessDelay());
-        	crawlConfig[i].setMaxPagesToFetch(crawler.getMaxPagesToFetch());
-        	crawlConfig[i].setConnectionTimeout(crawler.getConnectionTimeout());
-        	crawlConfig[i].setSocketTimeout(crawler.getSocketTimeout());
-        	crawlConfig[i].setMaxDepthOfCrawling(crawler.getMaxDepth());
-        	crawlConfig[i].setIncludeBinaryContentInCrawling(crawler.isIncludeBinaryContent());
-        	crawlConfig[i].setIncludeHttpsPages(crawler.isIncludeHttpsPages());
-//        	crawlConfig[i].maxCo
+        	crawlConfig[i] = Util.getConfig(crawler, crawlStorageFolder);        	
         	
         	pageFetcher[i] = new PageFetcher(crawlConfig[i]);
         	robotstxtServer = new RobotstxtServer(robotstxtConfig, pageFetcher[0]);
