@@ -3,7 +3,12 @@ package models;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+@XmlRootElement (name = "CrawlerConfig")
 public class CrawlerConfig implements Serializable {
 	private int connectionTimeout;
 	
@@ -73,6 +78,7 @@ public class CrawlerConfig implements Serializable {
 	/**
 	 * @param connectionTimeout the connectionTimeout to set
 	 */
+	@XmlElement (name = "connectionTimeout")
 	public void setConnectionTimeout(int connectionTimeout) {
 		this.connectionTimeout = connectionTimeout;
 	}
@@ -87,6 +93,7 @@ public class CrawlerConfig implements Serializable {
 	/**
 	 * @param isIncludeBinaryContent the isIncludeBinaryContent to set
 	 */
+	@XmlElement (name = "isIncludeBinaryContent")
 	public void setIncludeBinaryContent(boolean isIncludeBinaryContent) {
 		this.isIncludeBinaryContent = isIncludeBinaryContent;
 	}
@@ -101,6 +108,7 @@ public class CrawlerConfig implements Serializable {
 	/**
 	 * @param isfollowRedirect the isfollowRedirect to set
 	 */
+	@XmlElement (name = "isFollowRedirect")
 	public void setfollowRedirect(boolean isfollowRedirect) {
 		this.isFollowRedirect = isfollowRedirect;
 	}
@@ -115,6 +123,7 @@ public class CrawlerConfig implements Serializable {
 	/**
 	 * @param isIncludeHttpsPages the isIncludeHttpsPages to set
 	 */
+	@XmlElement (name = "isIncludeHttpsPages")
 	public void setIncludeHttpsPages(boolean isIncludeHttpsPages) {
 		this.isIncludeHttpsPages = isIncludeHttpsPages;
 	}
@@ -129,6 +138,7 @@ public class CrawlerConfig implements Serializable {
 	/**
 	 * @param isResumableCrawling the isResumableCrawling to set
 	 */
+	@XmlElement (name = "isResumableCrawling")
 	public void setResumableCrawling(boolean isResumableCrawling) {
 		this.isResumableCrawling = isResumableCrawling;
 	}
@@ -143,6 +153,7 @@ public class CrawlerConfig implements Serializable {
 	/**
 	 * @param individualStorageFolder the individualStorageFolder to set
 	 */
+	@XmlElement (name = "individualStorageFolder")
 	public void setIndividualStorageFolder(String individualStorageFolder) {
 		this.individualStorageFolder = individualStorageFolder;
 	}
@@ -157,6 +168,7 @@ public class CrawlerConfig implements Serializable {
 	/**
 	 * @param politenessDelay the politenessDelay to set
 	 */
+	@XmlElement (name = "politenessDelay")
 	public void setPolitenessDelay(int politenessDelay) {
 		this.politenessDelay = politenessDelay;
 	}
@@ -171,6 +183,7 @@ public class CrawlerConfig implements Serializable {
 	/**
 	 * @param maxPagesToFetch the maxPagesToFetch to set
 	 */
+	@XmlElement (name = "maxPagesToFetch")
 	public void setMaxPagesToFetch(int maxPagesToFetch) {
 		this.maxPagesToFetch = maxPagesToFetch;
 	}
@@ -185,6 +198,7 @@ public class CrawlerConfig implements Serializable {
 	/**
 	 * @param maxDepth the maxDepth to set
 	 */
+	@XmlElement (name = "maxDepth")
 	public void setMaxDepth(int maxDepth) {
 		this.maxDepth = maxDepth;
 	}
@@ -199,6 +213,7 @@ public class CrawlerConfig implements Serializable {
 	/**
 	 * @param maxOutgoingPagesToFollow the maxOutgoingPagesToFollow to set
 	 */
+	@XmlElement (name = "maxOutgoingPagesToFollow")
 	public void setMaxOutgoingPagesToFollow(int maxOutgoingPagesToFollow) {
 		this.maxOutgoingPagesToFollow = maxOutgoingPagesToFollow;
 	}
@@ -213,6 +228,7 @@ public class CrawlerConfig implements Serializable {
 	/**
 	 * @param maxDownloadSize the maxDownloadSize to set
 	 */
+	@XmlElement (name = "maxDownloadSize")
 	public void setMaxDownloadSize(int maxDownloadSize) {
 		this.maxDownloadSize = maxDownloadSize;
 	}
@@ -227,6 +243,7 @@ public class CrawlerConfig implements Serializable {
 	/**
 	 * @param socketTimeout the socketTimeout to set
 	 */
+	@XmlElement (name = "socketTimeout")
 	public void setSocketTimeout(int socketTimeout) {
 		this.socketTimeout = socketTimeout;
 	}
@@ -241,6 +258,7 @@ public class CrawlerConfig implements Serializable {
 	/**
 	 * @param proxyHost the proxyHost to set
 	 */
+	@XmlElement (name = "proxyHost")
 	public void setProxyHost(String proxyHost) {
 		this.proxyHost = proxyHost;
 	}
