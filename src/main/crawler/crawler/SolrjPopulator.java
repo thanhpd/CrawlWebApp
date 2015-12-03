@@ -9,7 +9,6 @@ import org.apache.solr.common.SolrInputDocument;
 
 import helper.ConfigHandler;
 import models.CrawlerSetting;
-import models.Property;
 
 public class SolrjPopulator {
 	private static SolrjPopulator instance = null;

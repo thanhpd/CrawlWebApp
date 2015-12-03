@@ -10,10 +10,9 @@ import edu.uci.ics.crawler4j.robotstxt.RobotstxtConfig;
 import edu.uci.ics.crawler4j.robotstxt.RobotstxtServer;
 import helper.ConfigHandler;
 import helper.Util;
-import models.Crawler;
+
 import models.CrawlerConfig;
 import models.CrawlerSetting;
-import models.Property;
 
 
 public class Controller {	
