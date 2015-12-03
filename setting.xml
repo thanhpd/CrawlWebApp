@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<CrawlerSetting>
+    <CrawlerConfigs>
+        <concurrentThread>5</concurrentThread>
+        <connectionTimeout>30000</connectionTimeout>
+        <crawlersDomain>https://vi.wikipedia.org/</crawlersDomain>
+        <domainSeeders>https://vi.wikipedia.org/</domainSeeders>
+        <domainSeeders>https://vi.wikipedia.org/wiki/C%C3%B4ng_ngh%E1%BB%87</domainSeeders>
+        <includeBinaryContent>true</includeBinaryContent>
+        <includeHttpsPages>true</includeHttpsPages>
+        <individualStorageFolder>crawler1</individualStorageFolder>
+        <maxConnectionsPerHost>100</maxConnectionsPerHost>
+        <maxDepth>-1</maxDepth>
+        <maxDownloadSize>1048576</maxDownloadSize>
+        <maxOutgoingPagesToFollow>1000</maxOutgoingPagesToFollow>
+        <maxPagesToFetch>1000</maxPagesToFetch>
+        <maxTotalConnections>100</maxTotalConnections>
+        <politenessDelay>1000</politenessDelay>
+        <proxyPort>80</proxyPort>
+        <resumableCrawling>false</resumableCrawling>
+        <socketTimeout>20000</socketTimeout>
+        <userAgentString>crawler4j (http://code.google.com/p/crawler4j/)</userAgentString>
+    </CrawlerConfigs>
+    <CrawlerConfigs>
+        <concurrentThread>5</concurrentThread>
+        <connectionTimeout>30000</connectionTimeout>
+        <crawlersDomain>http://www.ibm.com/developerworks/vn/</crawlersDomain>
+        <domainSeeders>http://www.ibm.com/developerworks/vn/</domainSeeders>
+        <includeBinaryContent>true</includeBinaryContent>
+        <includeHttpsPages>true</includeHttpsPages>
+        <individualStorageFolder>crawler1</individualStorageFolder>
+        <maxConnectionsPerHost>100</maxConnectionsPerHost>
+        <maxDepth>-1</maxDepth>
+        <maxDownloadSize>1048576</maxDownloadSize>
+        <maxOutgoingPagesToFollow>1000</maxOutgoingPagesToFollow>
+        <maxPagesToFetch>1000</maxPagesToFetch>
+        <maxTotalConnections>100</maxTotalConnections>
+        <politenessDelay>1000</politenessDelay>
+        <proxyPort>80</proxyPort>
+        <resumableCrawling>false</resumableCrawling>
+        <socketTimeout>20000</socketTimeout>
+        <userAgentString>crawler4j (http://code.google.com/p/crawler4j/)</userAgentString>
+    </CrawlerConfigs>
+    <core>new_core</core>
+    <crawlStorageFolder>/data/crawl/root</crawlStorageFolder>
+    <numberOfCrawlers>2</numberOfCrawlers>
+    <port>8983</port>
+    <serverHost>localhost</serverHost>
+    <solrPath>solr</solrPath>
+</CrawlerSetting>

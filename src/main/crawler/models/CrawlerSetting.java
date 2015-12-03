@@ -2,11 +2,13 @@ package models;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlRootElement (name = "CrawlerSetting")
 public class CrawlerSetting {
 	private String serverHost;
@@ -115,7 +117,7 @@ public class CrawlerSetting {
 	/**
 	 * @param configs the configs to set
 	 */
-	@XmlElement (name = "CrawlerConfigs")
+	@XmlElement (name = "CrawlerConfigs")	
 	public void setConfigs(List<CrawlerConfig> configs) {
 		this.configs = configs;
 	}
