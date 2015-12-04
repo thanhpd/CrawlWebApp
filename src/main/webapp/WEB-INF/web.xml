@@ -4,4 +4,14 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+  <servlet>
+  	<servlet-name>CrawlerConfigServlet</servlet-name>
+  	<display-name>CrawlerConfigServlet</display-name>
+  	<description>Servlet for crawlers' configuration</description>
+  	<servlet-class>controllers.CrawlerConfigServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>CrawlerConfigServlet</servlet-name>
+  	<url-pattern>/CrawlerConfigServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

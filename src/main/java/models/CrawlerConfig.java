@@ -65,7 +65,7 @@ public class CrawlerConfig implements Serializable {
 		proxyPassword = null;
 		proxyHost = null;
 		
-		userAgentString = "crawler4j (http://code.google.com/p/crawler4j/)";
+		userAgentString = "crawler4j (https://github.com/yasserg/crawler4j/)";
 	}
 	
 	/**

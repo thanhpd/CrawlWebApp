@@ -19,7 +19,7 @@
         <proxyPort>80</proxyPort>
         <resumableCrawling>false</resumableCrawling>
         <socketTimeout>20000</socketTimeout>
-        <userAgentString>crawler4j (http://code.google.com/p/crawler4j/)</userAgentString>
+        <userAgentString>crawler4j (https://github.com/yasserg/crawler4j/)</userAgentString>
     </CrawlerConfigs>
     <CrawlerConfigs>
         <concurrentThread>5</concurrentThread>
@@ -39,7 +39,7 @@
         <proxyPort>80</proxyPort>
         <resumableCrawling>false</resumableCrawling>
         <socketTimeout>20000</socketTimeout>
-        <userAgentString>crawler4j (http://code.google.com/p/crawler4j/)</userAgentString>
+        <userAgentString>crawler4j (https://github.com/yasserg/crawler4j/)</userAgentString>
     </CrawlerConfigs>
     <core>new_core</core>
     <crawlStorageFolder>/data/crawl/root</crawlStorageFolder>
