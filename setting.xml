@@ -28,7 +28,7 @@
         <domainSeeders>http://www.ibm.com/developerworks/vn/</domainSeeders>
         <includeBinaryContent>true</includeBinaryContent>
         <includeHttpsPages>true</includeHttpsPages>
-        <individualStorageFolder>crawler1</individualStorageFolder>
+        <individualStorageFolder>crawler2</individualStorageFolder>
         <maxConnectionsPerHost>100</maxConnectionsPerHost>
         <maxDepth>-1</maxDepth>
         <maxDownloadSize>1048576</maxDownloadSize>
