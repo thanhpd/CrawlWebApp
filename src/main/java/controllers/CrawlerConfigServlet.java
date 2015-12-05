@@ -30,7 +30,8 @@ public class CrawlerConfigServlet extends HttpServlet {
 		ConfigHandler configHandler = ConfigHandler.getInstance();
 		CrawlerSetting setting = configHandler.getCrawlerSetting();
 		request.setAttribute("crawlerSetting", setting);
-		request.getRequestDispatcher("/index.jsp").forward(request, response);
+		request.setAttribute("message", "hello");
+		request.getRequestDispatcher("/pages/setting.jsp").forward(request, response);
 	}
 
 	/**

@@ -3,7 +3,7 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-  <display-name>Archetype Created Web Application</display-name>
+  <display-name>ICrawler</display-name>
   <servlet>
   	<servlet-name>CrawlerConfigServlet</servlet-name>
   	<display-name>CrawlerConfigServlet</display-name>
@@ -12,6 +12,6 @@
   </servlet>
   <servlet-mapping>
   	<servlet-name>CrawlerConfigServlet</servlet-name>
-  	<url-pattern>/CrawlerConfigServlet</url-pattern>
+  	<url-pattern>/config.jsp</url-pattern>
   </servlet-mapping>
 </web-app>

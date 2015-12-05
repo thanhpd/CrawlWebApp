@@ -5,7 +5,7 @@
   <artifactId>datacrawler</artifactId>
   <packaging>war</packaging>
   <version>0.0.1-SNAPSHOT</version>
-  <name>datacrawler Maven Webapp</name>
+  <name>datacrawler</name>
   <url>http://maven.apache.org</url>
   <dependencies>
     <dependency>
@@ -15,11 +15,10 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-		<groupId>com.thoughtworks.xstream</groupId>
-		<artifactId>xstream</artifactId>
-		<version>1.4.8</version>
+	    <groupId>javax.servlet</groupId>
+	    <artifactId>jstl</artifactId>
+	    <version>1.2</version>
 	</dependency>
-                    
     <dependency>
 	    <groupId>org.apache.solr</groupId>
 	    <artifactId>solr-core</artifactId>
