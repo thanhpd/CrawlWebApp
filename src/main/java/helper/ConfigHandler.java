@@ -27,7 +27,7 @@ public class ConfigHandler {
 	}
 	
 	public static ConfigHandler getInstance() {
-		if(instance == null) instance = new ConfigHandler();	
+		if(instance == null) {instance = new ConfigHandler();}	
 		checkIfConfigFileExisted();	
 		return instance;
 	}
@@ -38,7 +38,7 @@ public class ConfigHandler {
 	
 	private static void checkIfConfigFileExisted() {
 		File f = new File("setting.xml");
-		if(!f.exists() || !f.isDirectory()) { 
+		if(!f.exists()) { 
 			createConfigFile();
 		}
 	}
