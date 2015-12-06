@@ -56,21 +56,21 @@
 
 	<div class="container">
 		<div class="row">
-			<form action="CrawlerConfig" method="POST">
+			<form action="config.jsp" method="POST">
 				<div class="col-md-4">
 					<h3>Solr Configuration</h3>
 					<div class="input-group">
 						<strong>Server Host</strong> <br /> <input type="text"
-							class="form-control" placeholder="Server Host"
+							class="form-control" placeholder="Server Host" name="serverHost"
 							aria-describedby="server-host"
 							value="${crawlerSetting.serverHost}"> <br /> <strong>Port</strong>
-						<br /> <input type="text" class="form-control" placeholder="Port"
+						<br /> <input type="text" class="form-control" placeholder="Port" name="port"
 							aria-describedby="port" value="${crawlerSetting.port}">
 						<br /> <strong>Solr Path</strong> <br /> <input type="text"
-							class="form-control" placeholder="Solr Path"
+							class="form-control" placeholder="Solr Path" name="solrPath"
 							aria-describedby="solr-path" value="${crawlerSetting.solrPath}">
 						<br /> <strong>Core Name</strong> <br /> <input type="text"
-							class="form-control" placeholder="Core Name"
+							class="form-control" placeholder="Core Name" name="core"
 							aria-describedby="core-name" value="${crawlerSetting.core}">
 					</div>
 				</div>
@@ -78,103 +78,114 @@
 					<h3>Crawlers' Setting</h3>
 					<div class="input-group">
 						<strong>Crawl Storage Folder</strong> <br /> <input type="text"
-							class="form-control" placeholder="Crawl Storage Folder"
+							class="form-control" placeholder="Crawl Storage Folder" name="crawlStorageFolder"
 							aria-describedby="storage-folder"
 							value="${crawlerSetting.crawlStorageFolder}">
 					</div>
 					<div>
 						<strong>Number of crawlers</strong> <br /> 
-						<select	class="crawler-number" title="${crawlerSetting.numberOfCrawlers}">
-							<c:forEach begin="1" end="5" varStatus="loop">
-								<option> ${ loop.index }</option>						    
-							</c:forEach>
-						</select>
+						<input type="text" class="form-control" placeholder="Number of Crawlers" name="numberOfCrawlers" aria-describedby="numberOfCrawlers" value="${crawlerSetting.numberOfCrawlers}"> <br />
 						<c:forEach begin="1" end="${crawlerSetting.numberOfCrawlers}" varStatus="loop">
-							<c:set var="tmp" scope="session" value="${config[loop.index - 1]}"/>
+							<c:set var="tmp" scope="page" value="${config[loop.index - 1]}"/>
 							<div class="panel panel-primary">
 								<div class="panel-heading">Crawler ${ loop.index }</div>
 							  	<div class="panel-body">
 							    	<div class="col-md-6">
 							    		<strong>Connection Timeout</strong> <br />
-							    		<input type="text" class="form-control" placeholder="Connection Timeout" aria-describedby="connection-timeout" value="${tmp.connectionTimeout}"> <br />
+							    		<input type="text" class="form-control" placeholder="Connection Timeout" name="connectionTimeout" aria-describedby="connection-timeout" value="${tmp.getConnectionTimeout()}"> <br />
 							    		<strong>socketTimeout</strong> <br />
-							    		<input type="text" class="form-control" placeholder="socketTimeout" aria-describedby="socketTimeout" value="${tmp.socketTimeout}"> <br />
+							    		<input type="text" class="form-control" placeholder="socketTimeout" name="socketTimeout" aria-describedby="socketTimeout" value="${tmp.getSocketTimeout()}"> <br />
 							    		<strong>isFollowRedirect</strong>
 							    		<c:choose>
 							    			<c:when test="${tmp.isFollowRedirect() }">
-							    				<input type="checkbox" id="isFollowRedirect" checked /> 
+							    				<input type="checkbox" id="isFollowRedirect" name="isFollowRedirect" checked /> 
 								    		</c:when>
 								    		<c:otherwise>
-								    			<input type="checkbox" id="isFollowRedirect" />
+								    			<input type="checkbox" id="isFollowRedirect" name="isFollowRedirect" />
 								    		</c:otherwise>
 							    		</c:choose>
 							    		<br />
 							    		<strong>isIncludeBinaryContent</strong>
 							    		<c:choose>
 							    			<c:when test="${tmp.isIncludeBinaryContent() }">
-							    				<input type="checkbox" id="isIncludeBinaryContent" checked /> 
+							    				<input type="checkbox" id="isIncludeBinaryContent" name="isIncludeBinaryContent" checked /> 
 								    		</c:when>
 								    		<c:otherwise>
-								    			<input type="checkbox" id="isIncludeBinaryContent" />
+								    			<input type="checkbox" id="isIncludeBinaryContent" name="isIncludeBinaryContent" />
 								    		</c:otherwise>
 							    		</c:choose>
 							    		<br />
 							    		<strong>isIncludeHttpsPages</strong>
 							    		<c:choose>
 							    			<c:when test="${tmp.isIncludeHttpsPages() }">
-							    				<input type="checkbox" id="isIncludeHttpsPages" checked /> 
+							    				<input type="checkbox" id="isIncludeHttpsPages" name="isIncludeHttpsPages" checked /> 
 								    		</c:when>
 								    		<c:otherwise>
-								    			<input type="checkbox" id="isIncludeHttpsPages" />
+								    			<input type="checkbox" id="isIncludeHttpsPages" name="isIncludeHttpsPages" />
 								    		</c:otherwise>
 							    		</c:choose>
 							    		<br />
 							    		<strong>isResumableCrawling</strong>
 							    		<c:choose>
 							    			<c:when test="${tmp.isResumableCrawling() }">
-							    				<input type="checkbox" id="isResumableCrawling" checked /> 
+							    				<input type="checkbox" id="isResumableCrawling" name="isResumableCrawling" checked /> 
 								    		</c:when>
 								    		<c:otherwise>
-								    			<input type="checkbox" id="isResumableCrawling" />
+								    			<input type="checkbox" id="isResumableCrawling" name="isResumableCrawling" />
 								    		</c:otherwise>
 							    		</c:choose>
 							    		<br />
 							    		<strong>individualStorageFolder</strong> <br />
-							    		<input type="text" class="form-control" placeholder="individualStorageFolder" aria-describedby="individual-storage-folder" value="${tmp.individualStorageFolder}"> <br />
+							    		<input type="text" class="form-control" placeholder="individualStorageFolder" name="individualStorageFolder" aria-describedby="individual-storage-folder" value="${tmp.getIndividualStorageFolder()}"> <br />
 							    		<strong>politenessDelay</strong> <br />
-							    		<input type="text" class="form-control" placeholder="politenessDelay" aria-describedby="politeness-delay" value="${tmp.politenessDelay}"> <br />
+							    		<input type="text" class="form-control" placeholder="politenessDelay" name="politenessDelay" aria-describedby="politeness-delay" value="${tmp.getPolitenessDelay()}"> <br />
 							    		<strong>maxPagesToFetch</strong> <br />
-							    		<input type="text" class="form-control" placeholder="maxPagesToFetch" aria-describedby="maxPagesToFetch" value="${tmp.maxPagesToFetch}"> <br />
+							    		<input type="text" class="form-control" placeholder="maxPagesToFetch" name="maxPagesToFetch" aria-describedby="maxPagesToFetch" value="${tmp.getMaxPagesToFetch()}"> <br />
 							    		<strong>maxDepth</strong> <br />
-							    		<input type="text" class="form-control" placeholder="maxDepth" aria-describedby="maxDepth" value="${tmp.maxDepth}"> <br />
+							    		<input type="text" class="form-control" placeholder="maxDepth" name="maxDepth" aria-describedby="maxDepth" value="${tmp.getMaxDepth()}"> <br />
 							    		<strong>maxOutgoingPagesToFollow</strong> <br />
-							    		<input type="text" class="form-control" placeholder="maxOutgoingPagesToFollow" aria-describedby="maxOutgoingPagesToFollow" value="${tmp.maxOutgoingPagesToFollow}"> <br />
+							    		<input type="text" class="form-control" placeholder="maxOutgoingPagesToFollow" name="maxOutgoingPagesToFollow" aria-describedby="maxOutgoingPagesToFollow" value="${tmp.getMaxOutgoingPagesToFollow()}"> <br />
 							    		<strong>maxDownloadSize</strong> <br />
-							    		<input type="text" class="form-control" placeholder="maxDownloadSize" aria-describedby="maxDownloadSize" value="${tmp.maxDownloadSize}"> <br />
+							    		<input type="text" class="form-control" placeholder="maxDownloadSize" name="maxDownloadSize" aria-describedby="maxDownloadSize" value="${tmp.getMaxDownloadSize()}"> <br />
 							    		<strong>maxConnectionsPerHost</strong> <br />
-							    		<input type="text" class="form-control" placeholder="maxConnectionsPerHost" aria-describedby="maxConnectionsPerHost" value="${tmp.maxConnectionsPerHost}"> <br />
+							    		<input type="text" class="form-control" placeholder="maxConnectionsPerHost" name="maxConnectionsPerHost" aria-describedby="maxConnectionsPerHost" value="${tmp.getMaxConnectionsPerHost()}"> <br />
 							    		<strong>maxTotalConnections</strong> <br />
-							    		<input type="text" class="form-control" placeholder="maxTotalConnections" aria-describedby="maxTotalConnections" value="${tmp.maxTotalConnections}"> <br />							    									    		   	
+							    		<input type="text" class="form-control" placeholder="maxTotalConnections" name="maxTotalConnections" aria-describedby="maxTotalConnections" value="${tmp.getMaxTotalConnections()}"> <br />							    									    		   	
 							    	</div>
 							    	<div class="col-md-6">
 							    		<strong>proxyHost</strong> <br />
-							    		<input type="text" class="form-control" placeholder="proxyHost" aria-describedby="proxyHost" value="${tmp.proxyHost}"> <br />
+							    		<input type="text" class="form-control" placeholder="proxyHost" name="proxyHost" aria-describedby="proxyHost" value="${tmp.getProxyHost()}"> <br />
 							    		<strong>proxyUsername</strong> <br />
-							    		<input type="text" class="form-control" placeholder="proxyUsername" aria-describedby="proxyUsername" value="${tmp.proxyUsername}"> <br />
+							    		<input type="text" class="form-control" placeholder="proxyUsername" name="proxyUsername" aria-describedby="proxyUsername" value="${tmp.getProxyUsername()}"> <br />
 							    		<strong>proxyPassword</strong> <br />
-							    		<input type="text" class="form-control" placeholder="proxyPassword" aria-describedby="proxyPassword" value="${tmp.proxyPassword}"> <br />
+							    		<input type="text" class="form-control" placeholder="proxyPassword" name="proxyPassword" aria-describedby="proxyPassword" value="${tmp.getProxyPassword()}"> <br />
 							    		<strong>proxyPort</strong> <br />
-							    		<input type="text" class="form-control" placeholder="proxyPort" aria-describedby="proxyPort" value="${tmp.proxyPort}"> <br />
+							    		<input type="text" class="form-control" placeholder="proxyPort" name="proxyPort" aria-describedby="proxyPort" value="${tmp.getProxyPort()}"> <br />
 							    		<strong>userAgentString</strong> <br />
-							    		<input type="text" class="form-control" placeholder="userAgentString" aria-describedby="userAgentString" value="${tmp.userAgentString}"> <br />
+							    		<input type="text" class="form-control" placeholder="userAgentString" name="userAgentString" aria-describedby="userAgentString" value="${tmp.getUserAgentString()}"> <br />
 							    		<strong>concurrentThread</strong> <br />
-							    		<input type="text" class="form-control" placeholder="concurrentThread" aria-describedby="concurrentThread" value="${tmp.concurrentThread}"> <br />
+							    		<input type="text" class="form-control" placeholder="concurrentThread" name="concurrentThread" aria-describedby="concurrentThread" value="${tmp.getConcurrentThread()}"> <br />
+							    		<strong>crawlersDomain</strong>
+							    		<br />
+							    		<textarea rows="4" cols="40" name="crawlersDomain">
+							    			<c:forEach var="i" begin="0" end="${ tmp.crawlersDomain.size() }">
+							    				${ tmp.crawlersDomain[i] }
+							    			</c:forEach>	
+							    		</textarea> <br />
+							    		<strong>domainSeeders</strong>
+							    		<br />
+							    		<textarea rows="4" cols="40" name="domainSeeders">
+							    			<c:forEach var="i" begin="0" end="${ tmp.domainSeeders.size() }">
+							    				${ tmp.domainSeeders[i] }
+							    			</c:forEach>	
+							    		</textarea> <br />
 							    	</div>
 							  	</div>
 							</div>
 						</c:forEach>						
 					</div>
 				</div>
+				<input type="submit" value="Submit" />
 			</form>
 		</div>
 	</div>

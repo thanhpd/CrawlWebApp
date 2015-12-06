@@ -38,7 +38,7 @@ public class ConfigHandler {
 	
 	private static void checkIfConfigFileExisted() {
 		File f = new File("setting.xml");
-		if(!(f.exists() && !f.isDirectory())) { 
+		if(!f.exists() || !f.isDirectory()) { 
 			createConfigFile();
 		}
 	}
@@ -65,10 +65,10 @@ public class ConfigHandler {
 			// Create second crawler configuration
 			CrawlerConfig config2 = new CrawlerConfig();
 			config2.setIncludeBinaryContent(true);
-			config2.setIndividualStorageFolder("crawler1");
+			config2.setIndividualStorageFolder("crawler2");
 			config2.setMaxPagesToFetch(1000);
 			config2.setMaxDepth(-1);			
-			config2.setConcurrentThread(5);
+			config2.setConcurrentThread(6);
 			
 			List<String> crawlersDomain2 = new ArrayList<String>();
 			crawlersDomain2.add("http://www.ibm.com/developerworks/vn/");
