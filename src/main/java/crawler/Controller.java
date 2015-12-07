@@ -3,6 +3,10 @@ package crawler;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import controllers.CrawlerConfigServlet;
 import edu.uci.ics.crawler4j.crawler.CrawlConfig;
 import edu.uci.ics.crawler4j.crawler.CrawlController;
 import edu.uci.ics.crawler4j.fetcher.PageFetcher;
@@ -17,9 +21,11 @@ import models.CrawlerSetting;
 
 public class Controller {	
 	private static ConfigHandler configHandler = ConfigHandler.getInstance();
-	private static CrawlerSetting setting = configHandler.getCrawlerSetting();
+//	private static CrawlerSetting setting = configHandler.getCrawlerSetting();
+	final static Logger customLogger = LoggerFactory.getLogger(Controller.class);	
 	
-    public static void main(String[] args) throws Exception {    	
+    public static void initAndStartCrawlers(CrawlerSetting setting) throws Exception {
+    	customLogger.info("Hello");
         String crawlStorageFolder = setting.getCrawlStorageFolder();
         int numberOfTotalCrawlers = setting.getNumberOfCrawlers();        
         

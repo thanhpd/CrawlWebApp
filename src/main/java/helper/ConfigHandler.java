@@ -181,15 +181,32 @@ public class ConfigHandler {
 			tmp.setMaxDownloadSize(Integer.parseInt(maxDownloadSize[i]));
 			tmp.setMaxConnectionsPerHost(Integer.parseInt(maxConnectionsPerHost[i]));
 			tmp.setMaxTotalConnections(Integer.parseInt(maxTotalConnections[i]));
-			tmp.setProxyHost(proxyHost[i]);
-			tmp.setProxyUsername(proxyUsername[i]);
-			tmp.setProxyPassword(proxyPassword[i]);
-			tmp.setProxyPort(Integer.parseInt(proxyPort[i]));
+			if(proxyHost[i] != null && !proxyHost[i].isEmpty()) {
+				tmp.setProxyHost(proxyHost[i]);
+				tmp.setProxyUsername(proxyUsername[i]);
+				tmp.setProxyPassword(proxyPassword[i]);
+				tmp.setProxyPort(Integer.parseInt(proxyPort[i]));
+			}			
 			
 			tmp.setUserAgentString(userAgentString[i]);
 			
-			List<String> tmpCrawlersDomain = new ArrayList<String>(Arrays.asList(crawlersDomain[i].split("\\s+")));
-			List<String> tmpDomainSeeders = new ArrayList<String>(Arrays.asList(domainSeeders[i].split("\\s+")));
+			String[] tc = crawlersDomain[i].split("\\s+");
+			String[] td = domainSeeders[i].split("\\s+");
+									
+			List<String> tmpCrawlersDomain = new ArrayList<String>();
+			List<String> tmpDomainSeeders = new ArrayList<String>();
+			
+			for(int j = 0; j < tc.length; j++) {
+				if(tc[j] != null && !tc[j].isEmpty()) {
+					tmpCrawlersDomain.add(tc[j]);
+				}
+			}
+			
+			for(int m = 0; m < tc.length; m++) {
+				if(tc[m] != null && !tc[m].isEmpty()) {
+					tmpDomainSeeders.add(td[m]);
+				}
+			}
 			
 			tmp.setConcurrentThread(Integer.parseInt(concurrentThread[i]));
 			tmp.setCrawlersDomain(tmpCrawlersDomain);

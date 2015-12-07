@@ -1,12 +1,13 @@
 package crawler;
 
-import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.Set;
 import java.util.regex.Pattern;
 
 import org.apache.http.HttpStatus;
 import org.apache.solr.common.SolrInputDocument;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import edu.uci.ics.crawler4j.crawler.Page;
 import edu.uci.ics.crawler4j.crawler.WebCrawler;
@@ -15,6 +16,8 @@ import edu.uci.ics.crawler4j.url.WebURL;
 
 public class MyCrawler extends WebCrawler {
 	private SolrjPopulator server = SolrjPopulator.getInstance();
+	/* Get actual class name to be printed on */
+	final static Logger customLogger = LoggerFactory.getLogger(MyCrawler.class);
 	
     private final static Pattern FILTERS = Pattern.compile(".*(\\.(css|js|gif|jpg"
                                                            + "|png|mp3|mp3|zip|gz))$");
@@ -31,7 +34,7 @@ public class MyCrawler extends WebCrawler {
      public boolean shouldVisit(Page referringPage, WebURL url) {
     	 String hrefOrigin = url.getURL();       	     	 
     	 if (FILTERS2.matcher(hrefOrigin).find()) {
-    		 System.out.println("Ignored: " + hrefOrigin);
+    		customLogger.info("Ignored: " + hrefOrigin);
    	      	return false;
 		 }
     	 String href = url.getURL().toLowerCase();
@@ -57,8 +60,7 @@ public class MyCrawler extends WebCrawler {
     	 
     	 int docid = page.getWebURL().getDocid();
     	 String url = page.getWebURL().getURL();
-    	 int parentDocid = page.getWebURL().getParentDocid();
-         System.out.println("AAA");
+    	 int parentDocid = page.getWebURL().getParentDocid();         
          logger.debug("Docid: {}", page.getWebURL().getDocid());
          logger.info("URL: {}", url);
          logger.debug("Docid of parent page: {}", parentDocid);

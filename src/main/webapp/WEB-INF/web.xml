@@ -1,17 +1,23 @@
-<!DOCTYPE web-app PUBLIC
- "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
- "http://java.sun.com/dtd/web-app_2_3.dtd" >
-
 <web-app>
+	<context-param>
+        <param-name>isLog4jAutoInitializationDisabled</param-name>
+        <param-value>true</param-value>
+    </context-param>
   <display-name>ICrawler</display-name>
   <servlet>
   	<servlet-name>CrawlerConfigServlet</servlet-name>
   	<display-name>CrawlerConfigServlet</display-name>
   	<description>Servlet for crawlers' configuration</description>
   	<servlet-class>controllers.CrawlerConfigServlet</servlet-class>
+  	<init-param>
+			<param-name>log4j-properties-location</param-name>
+			<param-value>WEB-INF/log4j.properties</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>  	
   </servlet>
   <servlet-mapping>
   	<servlet-name>CrawlerConfigServlet</servlet-name>
   	<url-pattern>/config.jsp</url-pattern>
   </servlet-mapping>
+  
 </web-app>

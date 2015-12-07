@@ -168,15 +168,15 @@
 							    		<strong>crawlersDomain</strong>
 							    		<br />
 							    		<textarea rows="4" cols="40" name="crawlersDomain">
-							    			<c:forEach var="i" begin="0" end="${ tmp.crawlersDomain.size() }">
-							    				${ tmp.crawlersDomain[i] }
+							    			<c:forEach var="i" begin="0" end="${ tmp.getCrawlersDomain().size()-1}">
+							    				${ tmp.getCrawlersDomain().get(i) }
 							    			</c:forEach>	
 							    		</textarea> <br />
 							    		<strong>domainSeeders</strong>
 							    		<br />
 							    		<textarea rows="4" cols="40" name="domainSeeders">
-							    			<c:forEach var="i" begin="0" end="${ tmp.domainSeeders.size() }">
-							    				${ tmp.domainSeeders[i] }
+							    			<c:forEach var="i" begin="0" end="${ tmp.getDomainSeeders().size()-1 }">
+							    				${ tmp.getDomainSeeders().get(i) }
 							    			</c:forEach>	
 							    		</textarea> <br />
 							    	</div>

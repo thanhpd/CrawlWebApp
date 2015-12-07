@@ -9,6 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import crawler.Controller;
+import crawler.MyCrawler;
 import helper.ConfigHandler;
 import models.CrawlerSetting;
 
@@ -17,7 +22,7 @@ import models.CrawlerSetting;
  */
 public class CrawlerConfigServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	final static Logger customLogger = LoggerFactory.getLogger(CrawlerConfigServlet.class);
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -28,13 +33,14 @@ public class CrawlerConfigServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		customLogger.info("Inside Get");
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		ConfigHandler configHandler = ConfigHandler.getInstance();
 		CrawlerSetting setting = configHandler.getCrawlerSetting();
 		request.setAttribute("crawlerSetting", setting);
 		request.setAttribute("message", "hello");
-		request.getRequestDispatcher("/pages/setting.jsp").forward(request, response);
+		request.getRequestDispatcher("/pages/setting.jsp").forward(request, response);		
 	}
 
 	/**
@@ -89,5 +95,15 @@ public class CrawlerConfigServlet extends HttpServlet {
 	      }
 	      out.println("</tr>\n</table>\n</body></html>");
 	      ConfigHandler.saveSettingBasedOnRequest(request);
+	      ConfigHandler configHandler = ConfigHandler.getInstance();
+		  CrawlerSetting setting = configHandler.getCrawlerSetting();		  
+		  try {
+			out.println("Inside");
+			Controller.initAndStartCrawlers(setting);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			out.println(e.toString());
+			e.printStackTrace();
+		}
 	}
 }
