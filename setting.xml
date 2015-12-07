@@ -22,7 +22,7 @@
         <userAgentString>crawler4j (https://github.com/yasserg/crawler4j/)</userAgentString>
     </CrawlerConfigs>
     <CrawlerConfigs>
-        <concurrentThread>5</concurrentThread>
+        <concurrentThread>6</concurrentThread>
         <connectionTimeout>30000</connectionTimeout>
         <crawlersDomain>http://www.ibm.com/developerworks/vn/</crawlersDomain>
         <domainSeeders>http://www.ibm.com/developerworks/vn/</domainSeeders>

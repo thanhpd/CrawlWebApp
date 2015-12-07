@@ -1,5 +1,6 @@
 package crawler;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.Set;
 import java.util.regex.Pattern;
@@ -17,7 +18,7 @@ public class MyCrawler extends WebCrawler {
 	
     private final static Pattern FILTERS = Pattern.compile(".*(\\.(css|js|gif|jpg"
                                                            + "|png|mp3|mp3|zip|gz))$");
-    private final static Pattern FILTERS2 = Pattern.compile("redlink=1|veaction=edit|action=edit|action=history|action=info|returnto|oldid|printable=yes|Wikipedia:|Trang_Ch%C3%ADnh:|%C4%90%E1%BA%B7c_bi%E1%BB%87t:|Ch%E1%BB%A7_%C4%91%E1%BB%81:");    
+    private final static Pattern FILTERS2 = Pattern.compile("(redlink|veaction|action|returnto|oldid|printable|Wikipedia)");    
     private String[] myCrawlDomains;    
     
     @Override
@@ -28,12 +29,13 @@ public class MyCrawler extends WebCrawler {
         
      @Override
      public boolean shouldVisit(Page referringPage, WebURL url) {
-    	 String hrefOrigin = url.getURL();
-    	 if (FILTERS2.matcher(hrefOrigin).matches()) {
+    	 String hrefOrigin = url.getURL();       	     	 
+    	 if (FILTERS2.matcher(hrefOrigin).find()) {
+    		 System.out.println("Ignored: " + hrefOrigin);
    	      	return false;
 		 }
     	 String href = url.getURL().toLowerCase();
-    	    if (FILTERS.matcher(href).matches()) {
+    	    if (FILTERS.matcher(href).matches()) {    	    	
     	      return false;
     	    }
     	    
@@ -56,7 +58,7 @@ public class MyCrawler extends WebCrawler {
     	 int docid = page.getWebURL().getDocid();
     	 String url = page.getWebURL().getURL();
     	 int parentDocid = page.getWebURL().getParentDocid();
-         
+         System.out.println("AAA");
          logger.debug("Docid: {}", page.getWebURL().getDocid());
          logger.info("URL: {}", url);
          logger.debug("Docid of parent page: {}", parentDocid);

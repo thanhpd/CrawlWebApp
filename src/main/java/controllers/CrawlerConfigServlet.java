@@ -88,5 +88,6 @@ public class CrawlerConfigServlet extends HttpServlet {
 	         }
 	      }
 	      out.println("</tr>\n</table>\n</body></html>");
+	      ConfigHandler.saveSettingBasedOnRequest(request);
 	}
 }
